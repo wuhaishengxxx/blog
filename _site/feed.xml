@@ -5,9 +5,27 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 21 Nov 2017 14:55:32 +0800</pubDate>
-    <lastBuildDate>Tue, 21 Nov 2017 14:55:32 +0800</lastBuildDate>
+    <pubDate>Tue, 21 Nov 2017 15:17:53 +0800</pubDate>
+    <lastBuildDate>Tue, 21 Nov 2017 15:17:53 +0800</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>JS sort原理与稳定性分析 </title>
+        <description>我在游戏开发中，直接使用sort对数据进行排序，比如物品，常根据类型和品质进行排序，但是发现，排序的结果一直在变化，比如在不改变数据的情况下，第一次登录跟第二次登陆背包物品的顺序是不一致的，百般测试对比方法，不得其解，遂对sort进行研究。
+
+</description>
+        <pubDate>Sat, 11 Nov 2017 22:06:05 +0800</pubDate>
+        <link>http://localhost:4000/2017/11/11/JS-Sort/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/11/JS-Sort/</guid>
+        
+        <category>Js</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>H5</category>
+        
+      </item>
     
       <item>
         <title>GLSL 手册（转）</title>
@@ -232,20 +250,6 @@ H5游戏开发之七牛CDN
         
         
         <category>H5</category>
-        
-      </item>
-    
-      <item>
-        <title>关于本博客主题</title>
-        <description>本主题作者的链接，我觉得作者的博文值得收藏推荐</description>
-        <pubDate>Sat, 10 Oct 2015 23:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2015/10/10/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/2015/10/10/welcome-to-jekyll/</guid>
-        
-        <category>about</category>
-        
-        
-        <category>about</category>
         
       </item>
     
