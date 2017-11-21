@@ -209,7 +209,7 @@ function compare(var a,var b){
 arr.sort(compare);
 </code></pre></div></div>
 <p>结果：[90, 65, 33, 12, 12, 1, 0]<br />
-注意的是，无参数的sort()是讲数组转换为字符进行对比，结果是12&lt; 9
+注意的是，无参数的sort()是讲数组转换为字符进行对比，结果是12&lt; 9<br />
 <img src="images/js-sort/5.png" alt="" /><br />
 知其然也要知其所以然，在使用sort的时候，常常遇到坑，原本有序的比如obj1.key == obj2.key 时，obj1跟obj2的顺序不稳定。对此，需要从源码入手，查看sort是怎么实现的。
 附源码：<br />
