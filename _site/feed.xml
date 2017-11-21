@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 21 Nov 2017 14:06:47 +0800</pubDate>
-    <lastBuildDate>Tue, 21 Nov 2017 14:06:47 +0800</lastBuildDate>
+    <pubDate>Tue, 21 Nov 2017 14:31:17 +0800</pubDate>
+    <lastBuildDate>Tue, 21 Nov 2017 14:31:17 +0800</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -15,32 +15,90 @@
 
 一、着色（Shader）语言
 
-着色语言是一种类C的编程语言，但不像C语言一样支持双精度浮点型(double)、字节型(byte)、短整型(short)、长整型(long)，并且取消了C中的联合体(union)、枚举类型(enum)、无符号数(unsigned)以及位运算等特性。 着色语言中有许多内建的原生数据类型以及构建数据类型，如：浮点型(float)、布尔型(bool)、整型(int)、矩阵型(matrix)以及向量型(vec2、vec3等)等。总体来说，这些数据类型可以分为标量、向量、矩阵、采样器、结构体以及数组等。 shader支持下面数据类型：
+着色语言是一种类C的编程语言，但不像C语言一样支持双精度浮点型(double)、字节型(byte)、短整型(short)、长整型(long)，并且取消了C中的联合体(union)、枚举类型(enum)、无符号数(unsigned)以及位运算等特性。 着色语言中有许多内建的原生数据类型以及构建数据类型，如：浮点型(float)、布尔型(bool)、整型(int)、矩阵型(matrix)以及向量型(vec2、vec3等)等。总体来说，这些数据类型可以分为标量、向量、矩阵、采样器、结构体以及数组等。
 
-float bool int 基本数据类型
-vec2 包含了2个浮点数的向量
-vec3 包含了3个浮点数的向量
-vec4 包含了4个浮点数的向量
-ivec2 包含了2个整数的向量
-ivec3 包含了3个整数的向量
-ivec4 包含了4个整数的向量
-bvec2 包含了2个布尔数的向量
-bvec3 包含了3个布尔数的向量
-bvec4 包含了4个布尔数的向量
-mat2 2&lt;em&gt;2维矩阵
-mat3 3&lt;/em&gt;3维矩阵
-mat4 4*4维矩阵
-sampler1D 1D纹理采样器
-sampler2D 2D纹理采样器
-sampler3D 3D纹理采样器
+shader数据类型：
 
-&lt;ol&gt;
-  &lt;li&gt;顶点着色器&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;类型&lt;/th&gt;
+      &lt;th&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;float bool int&lt;/td&gt;
+      &lt;td&gt;基本数据类型&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vec2&lt;/td&gt;
+      &lt;td&gt;包含了2个浮点数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vec3&lt;/td&gt;
+      &lt;td&gt;包含了3个浮点数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vec4&lt;/td&gt;
+      &lt;td&gt;包含了4个浮点数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ivec2&lt;/td&gt;
+      &lt;td&gt;包含了2个整数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ivec3&lt;/td&gt;
+      &lt;td&gt;包含了3个整数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ivec4&lt;/td&gt;
+      &lt;td&gt;包含了4个整数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bvec2&lt;/td&gt;
+      &lt;td&gt;包含了2个布尔数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bvec3&lt;/td&gt;
+      &lt;td&gt;包含了3个布尔数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bvec4&lt;/td&gt;
+      &lt;td&gt;包含了4个布尔数的向量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;mat2&lt;/td&gt;
+      &lt;td&gt;2*2维矩阵&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;mat3&lt;/td&gt;
+      &lt;td&gt;3*3维矩阵&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;mat4&lt;/td&gt;
+      &lt;td&gt;4*4维矩阵&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;sampler1D&lt;/td&gt;
+      &lt;td&gt;1D纹理采样器&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;sampler2D&lt;/td&gt;
+      &lt;td&gt;2D纹理采样器&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;sampler3D&lt;/td&gt;
+      &lt;td&gt;3D纹理采样器&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-1.1 顶点着色器示例代码
+&lt;h2 id=&quot;1-顶点着色器&quot;&gt;1. 顶点着色器&lt;/h2&gt;
 
-uniform mat4 uMVPMatrix; // 应用程序传入顶点着色器的总变换矩阵
+&lt;h3 id=&quot;11-顶点着色器示例代码&quot;&gt;1.1 顶点着色器示例代码&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uniform mat4 uMVPMatrix; // 应用程序传入顶点着色器的总变换矩阵
 attribute vec4 aPosition; // 应用程序传入顶点着色器的顶点位置
 attribute vec2 aTextureCoord; // 应用程序传入顶点着色器的顶点纹理坐标
 attribute vec4 aColor // 应用程序传入顶点着色器的顶点颜色变量
@@ -53,7 +111,9 @@ vColor = aColor; // 将顶点颜色数据传入片元着色器
 vTextureCoord = aTextureCoord; // 将接收的纹理坐标传递给片元着色器
 }
 
-1.2 顶点着色器介绍
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;12-顶点着色器介绍&quot;&gt;1.2 顶点着色器介绍&lt;/h3&gt;
 
 顶点着色器是一个可编程的处理单元，执行顶点变换、纹理坐标变换、光照、材质等顶点的相关操作，每顶点执行一次。替代了传统渲染管线中顶点变换、光照以及纹理坐标的处理，开发人员可以根据自己的需求自行开发，大大增加了程序的灵活性。
 
@@ -74,8 +134,7 @@ vTextureCoord = aTextureCoord; // 将接收的纹理坐标传递给片元着色�
 &lt;/ol&gt;
 
 2.1 片元着色器示例代码
-
-precision mediump float; // 设置工作精度
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;precision mediump float; // 设置工作精度
 varying vec4 vColor; // 接收从顶点着色器过来的顶点颜色数据
 varying vec2 vTextureCoord; // 接收从顶点着色器过来的纹理坐标
 uniform sampler2D sTexture; // 纹理采样器，代表一幅纹理
@@ -83,6 +142,7 @@ void main()
 {
 gl_FragColor = texture2D(sTexture, vTextureCoord) * vColor;// 进行纹理采样
 }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 此片元着色器的主要功能为根据接收的记录片元纹理坐标的易变变量中的纹理坐标，调用texture2D内建函数从采样器中进行纹理采样，得到此片元的颜色值。最后，将采样到的颜色值传给gl_FragColor内建变量，完成片元的着色。
 
 2.2 片元着色器介绍
@@ -96,8 +156,7 @@ gl_FragColor = texture2D(sTexture, vTextureCoord) * vColor;// 进行纹理采样
 （2）gl_FragColor为内置变量，用来保存片元着色器计算完成的片元颜色值，此颜色值将送入渲染管线的后继阶段进行处理。
 
 二、加载着色器代码示例
-
-private int loadShader( int shaderType, String source)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private int loadShader( int shaderType, String source)
 {
 // 创建一个新shader
 int shader = GLES20.glCreateShader(shaderType);
@@ -115,7 +174,7 @@ GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS, compiled, 0);
 if (compiled[0] == 0)
 {
 //若编译失败则显示错误日志并删除此shader
-Log.e(TAG, “Could not compile shader “ + shaderType + “:”);
+Log.e(TAG, &quot;Could not compile shader &quot; + shaderType + &quot;:&quot;);
 Log.e(TAG, GLES20.glGetShaderInfoLog(shader));
 GLES20.glDeleteShader(shader);
 shader = 0;
@@ -124,21 +183,23 @@ shader = 0;
 
 return shader;
 }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 上述示例代码中主要用到了三个方法：
-
-GLES20.glCreateShader(shaderType);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GLES20.glCreateShader(shaderType);
 GLES20.glShaderSource(shader, source);
 GLES20.glCompileShader(shader);
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ol&gt;
   &lt;li&gt;GLES20.glCreateShader()， 创建一个容纳shader的容器，称为shader容器。&lt;/li&gt;
 &lt;/ol&gt;
 
 函数原型：
-int glCreateShader (int type)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int glCreateShader (int type)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 方法参数：
-GLES20.GL_VERTEX_SHADER (顶点shader)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GLES20.GL_VERTEX_SHADER (顶点shader)
 GLES20.GL_FRAGMENT_SHADER (片元shader)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 如果调用成功的话，函数将返回一个整形的正整数作为shader容器的id。 如果对c++熟悉的话，该函数的返回值理解为指针或者句柄更合适。
 
 &lt;ol&gt;
@@ -170,49 +231,48 @@ shader是代表shader容器的id。
 
 4.1 编译阶段使用glGetShaderiv获取编译情况
 
-函数原型：
-void glGetShaderiv (int shader, int pname, int[] params, int offset)
-参数含义：
-shader是一个shader的id；
-pname使用GL_COMPILE_STATUS；
+函数原型：&lt;br /&gt;
+void glGetShaderiv (int shader, int pname, int[] params, int offset)&lt;br /&gt;
+参数含义：&lt;br /&gt;
+shader是一个shader的id；&lt;br /&gt;
+pname使用GL_COMPILE_STATUS；&lt;br /&gt;
 params是返回值，如果一切正常返回GL_TRUE代，否则返回GL_FALSE。
 
 4.2编译阶段使用glGetShaderInfoLog获取编译错误
 
 函数原型：
-String glGetShaderInfoLog (int shader)
-参数含义：
+String glGetShaderInfoLog (int shader)&lt;br /&gt;
+参数含义：&lt;br /&gt;
 shader是一个顶点shader或者片元shader的id。
 
 4.3 在连接阶段使用glGetProgramiv获取连接情况
 
 函数原型：
-void glGetProgramiv (int program, int pname, int[] params, int offset)
-参数含义：
-program是一个着色器程序的id；
-pname是GL_LINK_STATUS；
+void glGetProgramiv (int program, int pname, int[] params, int offset)&lt;br /&gt;
+参数含义：&lt;br /&gt;
+program是一个着色器程序的id；&lt;br /&gt;
+pname是GL_LINK_STATUS；&lt;br /&gt;
 param是返回值，如果一切正常返回GL_TRUE代，否则返回GL_FALSE。
 
 4.4 在连接阶段使用glGetProgramInfoLog获取连接错误
 
-函数原型：
-String glGetProgramInfoLog (int program)
-参数含义：
+函数原型：&lt;br /&gt;
+String glGetProgramInfoLog (int program)&lt;br /&gt;
+参数含义：&lt;br /&gt;
 program是一个着色器程序的id。
 
 4.5 清理shader的glDeleteShader方法
 
 当不再需要某个shader或某个程序的时候，需要对其进行清理，以释放资源。前面，提到过如何向一个程序中添加一个shader。这里可调用下面的函数来将一个shader从一个程序中清除掉。
 
-函数原型：
-void glDeleteShader (int shader)；
-参数含义：
-shader是要被排除的顶点shader或者片元shader的id。
+函数原型：&lt;br /&gt;
+void glDeleteShader (int shader)；&lt;br /&gt;
+参数含义：&lt;br /&gt;
+shader是要被排除的顶点shader或者片元shader的id。&lt;br /&gt;
 如果，一个shader被删除之前没有从相应的程序中排除，那么这个shader不会被实际删除，而只是被标记为被删除；当shader被从程序中排除的时候，才会被真正地删除。
 
 三、创建着色器程序代码示例
-
-private int createProgram(String vertexSource, String fragmentSource)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private int createProgram(String vertexSource, String fragmentSource)
 {
 // 加载顶点着色器
 int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexSource);
@@ -246,7 +306,7 @@ GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, linkStatus, 0);
 // 若链接失败则报错并删除程序
 if (linkStatus[0] != GLES20.GL_TRUE)
 {
-Log.e(TAG, “Could not link program: “);
+Log.e(TAG, &quot;Could not link program: &quot;);
 Log.e(TAG, GLES20.glGetProgramInfoLog(program));
 GLES20.glDeleteProgram(program);
 program = 0;
@@ -259,44 +319,44 @@ GLES20.glDeleteShader(pixelShader);
 
 return program;
 }
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ol&gt;
   &lt;li&gt;glCreateProgram，在连接shader之前，首先要创建一个容纳程序的容器，称为着色器程序容器。可以通过glCreateProgram函数来创建一个程序容器。&lt;/li&gt;
 &lt;/ol&gt;
 
-函数原型：
-int glCreateProgram ()
+函数原型：&lt;br /&gt;
+int glCreateProgram ()&lt;br /&gt;
 如果函数调用成功将返回一个正整数作为该着色器程序的id。
 
 &lt;ol&gt;
   &lt;li&gt;glAttachShader，接下来，我们要将shader容器添加到程序中。这时的shader容器不一定需要被编译，他们甚至不需要包含任何的代码。我们要做的只是将shader容器添加到程序中。使用glAttachShader函数来为程序添加shader容器。&lt;/li&gt;
 &lt;/ol&gt;
 
-函数原型：
-void glAttachShader (int program, int shader)
-参数含义：
-program是着色器程序容器的id；
-shader是要添加的顶点或者片元shader容器的id。
+函数原型：&lt;br /&gt;
+void glAttachShader (int program, int shader)&lt;br /&gt;
+参数含义：&lt;br /&gt;
+program是着色器程序容器的id；&lt;br /&gt;
+shader是要添加的顶点或者片元shader容器的id。&lt;br /&gt;
 如果你同时拥有了，顶点shader和片元shader，需要分别将他们各自的两个shader容器添加的程序容器中。
 
 &lt;ol&gt;
   &lt;li&gt;glLinkProgram，链接程序。&lt;/li&gt;
 &lt;/ol&gt;
 
-函数原型：
-void glLinkProgram (int program)
-参数含义：
-program是着色器程序容器的id。
+函数原型：&lt;br /&gt;
+void glLinkProgram (int program)&lt;br /&gt;
+参数含义：&lt;br /&gt;
+program是着色器程序容器的id。&lt;br /&gt;
 在链接操作执行以后，可以任意修改shader的源代码，对shader重新编译不会影响整个程序，除非重新链接程序。
 
 &lt;ol&gt;
   &lt;li&gt;glUseProgram，加载并使用链接好的程序。&lt;/li&gt;
 &lt;/ol&gt;
 
-函数原型：
-void glUseProgram (int program)
-参数含义：
-program是要使用的着色器程序的id。
+函数原型：&lt;br /&gt;
+void glUseProgram (int program)&lt;br /&gt;
+参数含义：&lt;br /&gt;
+program是要使用的着色器程序的id。&lt;br /&gt;
 如果将program设置为0，表示使用固定功能管线。如果程序已经在使用的时候，对程序进行重新编译，编译后的应用程序会自动替代以前的那个被调用，这时你不需要再次调用这个函数。
 
 四、 向着色器程序中传递数据
@@ -361,13 +421,14 @@ normalized 指定当被访问时，固定点数据值是否应该被归一化（
 stride 指定连续顶点属性之间的偏移量。如果为0，那么顶点属性会被理解为：它们是紧密排列在一起的。初始值为0。如果normalized被设置为GL_TRUE，意味着整数型的值会被映射至区间&lt;a href=&quot;有符号整数&quot;&gt;-1,1&lt;/a&gt;，或者区间[0,1]（无符号整数），反之，这些值会被直接转换为浮点值而不进行归一化处理；
 ptr 顶点的缓冲数据。
 
-2.2 启用或者禁用顶点属性数组。 调用glEnableVertexAttribArray和glDisableVertexAttribArray传入参数index。如果启用，那么当glDrawArrays或者glDrawElements被调用时，顶点属性数组会被使用。
+2.2 启用或者禁用顶点属性数组。    &lt;br /&gt;
+调用glEnableVertexAttribArray和glDisableVertexAttribArray传入参数index。如果启用，那么当glDrawArrays或者glDrawElements被调用时，顶点属性数组会被使用。
 
 2.3 glActiveTexture， 选择活动纹理单元。
 
-函数原型：
-void glActiveTexture (int texture)
-参数含义：
+函数原型  ：
+void glActiveTexture (int texture)&lt;br /&gt;
+参数含义：&lt;br /&gt;
 texture指定哪一个纹理单元被置为活动状态。texture必须是GL_TEXTUREi之一，其中0 &amp;lt;= i &amp;lt; GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS，初始值为GL_TEXTURE0。
 glActiveTexture()确定了后续的纹理状态改变影响哪个纹理，纹理单元的数量是依据该纹理单元所被支持的具体实现。
 </description>
