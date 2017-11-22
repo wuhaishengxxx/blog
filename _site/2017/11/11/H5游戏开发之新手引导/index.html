@@ -233,12 +233,31 @@
 
 <h2 id="配置设计">配置设计</h2>
 <p>配置的三个基本要素：1.步骤 step ，2.类型type，点击类，对话类 3.UI
-因此，引导可以这么配置
-step|type|UI|
-—|—
-1|0|[0,1,2]|
-2|0|[1,1,4，4]|
-UI配置说明： UI的设计，通常是一个树的数据结构。理想状态下，我们能更数结构访问到我们需要的ui，step 1的ui[0,1,2],层级为0=&gt;1=&gt;2 ，可能是0主界面，1为0界面上的某个面板，2为我们要引导点击的Button<br />
+因此，引导可以这么配置</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>step</th>
+      <th style="text-align: left">type</th>
+      <th>UI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td style="text-align: left">0</td>
+      <td>[0,1,2]</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td style="text-align: left">0</td>
+      <td>[1,1,4，4]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>UI配置说明： UI的设计，通常是一个树的数据结构。理想状态下，我们能更数结构访问到我们需要的ui，step 1的ui[0,1,2],层级为0=&gt;1=&gt;2 ，可能是0主界面，1为0界面上的某个面板，2为我们要引导点击的Button<br />
 这样的一个配置，必须要有一个树结构的UI设计和管理，树结构的UI的配置表。 
 当然，不是每个项目，都有那么完整的UI设计。如果针对单纯对话的引导，我们可以不指示玩家点击，任意点击触发下一步即可，那么针对指引点击的，我们的目的就是：只在哪个场景哪个界面点击到哪里。</p>
 
@@ -249,69 +268,69 @@ UI配置说明： UI的设计，通常是一个树的数据结构。理想状态
   <thead>
     <tr>
       <th>字段</th>
-      <th>说明</th>
+      <th style="text-align: left">说明</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>id</td>
-      <td>主键</td>
+      <td style="text-align: left">主键</td>
     </tr>
     <tr>
       <td>desc</td>
-      <td>描述</td>
+      <td style="text-align: left">描述</td>
     </tr>
     <tr>
       <td>type</td>
-      <td>类型</td>
+      <td style="text-align: left">类型</td>
     </tr>
     <tr>
       <td>first</td>
-      <td>首次步数</td>
+      <td style="text-align: left">首次步数</td>
     </tr>
     <tr>
       <td>next</td>
-      <td>下一步</td>
+      <td style="text-align: left">下一步</td>
     </tr>
     <tr>
       <td>scene</td>
-      <td>所在场景</td>
+      <td style="text-align: left">所在场景</td>
     </tr>
     <tr>
       <td>panel</td>
-      <td>所在面板</td>
+      <td style="text-align: left">所在面板</td>
     </tr>
     <tr>
       <td>opneLevel</td>
-      <td>开启等级</td>
+      <td style="text-align: left">开启等级</td>
     </tr>
     <tr>
       <td>closeLevel</td>
-      <td>自动关闭等级</td>
+      <td style="text-align: left">自动关闭等级</td>
     </tr>
     <tr>
       <td>dialog</td>
-      <td>对话</td>
+      <td style="text-align: left">对话</td>
     </tr>
     <tr>
       <td>npcPos</td>
-      <td>npc位置</td>
+      <td style="text-align: left">npc位置</td>
     </tr>
     <tr>
       <td>isGuideUI</td>
-      <td>是否显示引导手势</td>
+      <td style="text-align: left">是否显示引导手势</td>
     </tr>
     <tr>
       <td>guideRect</td>
-      <td>点击区域</td>
+      <td style="text-align: left">点击区域</td>
     </tr>
     <tr>
       <td>side</td>
-      <td>手指方位</td>
+      <td style="text-align: left">手指方位</td>
     </tr>
     <tr>
       <td>sideText</td>
-      <td>手指提示文本</td>
+      <td style="text-align: left">手指提示文本</td>
     </tr>
   </tbody>
 </table>
