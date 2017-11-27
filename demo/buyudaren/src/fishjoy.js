@@ -37,10 +37,10 @@ game.load = function(container)
 	{
 		this.width = 980;
 		this.height = 545;
-		Q.addMeta({name:"viewport", content:"user-scalable=no"});
+		Q.addMeta({name:"viewport", content:"initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no,"});
 	}else
 	{		
-		Q.addMeta({name:"viewport", content:"user-scalable=no, initial-scale=1.0, minimum-scale=1, maximum-scale=1"});
+		Q.addMeta({name:"viewport", content:"initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no,"});
 		this.width = Math.min(1024, window.innerWidth);
 		this.height = Math.min(768, window.innerHeight);
 	}
