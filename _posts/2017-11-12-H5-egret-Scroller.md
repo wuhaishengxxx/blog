@@ -2,7 +2,7 @@
 eui.Scroller，滑动列表，游戏必不可少的一个组件，常用在任务列表，物品列表，菜单列表，好友列表，消息列表等等。
 演示：
 
-![1](http://www.whsblog.cn/img/scro_01.gif) ![2](http://www.whsblog.cn/img/scro_02.gif)
+![1](http://www.whsblog.cn/images/Scroller/scro_01.gif) ![2](http://www.whsblog.cn/images/Scroller/scro_02.gif)
 
 Scroller包含有两个方法的滚动条，即水平滚动条horizontalScrollBar （eui.HScrollBar对象），垂直滚动条verticalScrollBar（eui.VScrollBar对象）。我们可以通过设置scrollPolicyH 和scrollPolicyV来控制两个方向的滚动条是否启用，或者直接使用eui.VScrollBar或者eui.HScrollBar而 使用Scroller组件达到相同效果。
 Scroller简单代码示例(第1个Gif的代码)：
