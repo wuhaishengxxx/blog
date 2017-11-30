@@ -1,5 +1,20 @@
-# Egret H5游戏开发之Scroller的使用 #
+---
+layout: post
+title:  "Egret H5游戏开发之Scroller的使用 "
+date:   2017-11-11 14:06:05
+categories: H5
+tags: GLSL Egret  H5 eui Scroller
+---
+
+* content
+{:toc}
+s
 eui.Scroller，滑动列表，游戏必不可少的一个组件，常用在任务列表，物品列表，菜单列表，好友列表，消息列表等等。
+
+<!--more-->
+
+
+
 演示：
 
 ![1](http://www.whsblog.cn/images/Scroller/scro_01.gif) ![2](http://www.whsblog.cn/images/Scroller/scro_02.gif)
