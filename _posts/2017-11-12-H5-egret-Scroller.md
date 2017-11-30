@@ -1,27 +1,12 @@
----
-layout: post
-title:  "H5游戏开发之滑动列表"
-date:   2017-11-11 14:06:05
-categories: H5
-tags: H5 Egret 游戏 页游 JavaSCript TypeScript
----
+# Egret H5游戏开发之Scroller的使用 #
+eui.Scroller，滑动列表，游戏必不可少的一个组件，常用在任务列表，物品列表，菜单列表，好友列表，消息列表等等。
+演示：
 
-* content
-{:toc}
+![1](http://www.whsblog.cn/img/scro_01.gif) ![2](http://www.whsblog.cn/img/scro_02.gif)
 
-H5游戏开发之滑动列表
-
-<!--more-->
- eui.Scroller 滚动控制容器,是一个常用的组件，详见官方链接：
- [这里](http://developer.egret.com/cn/github/egret-docs/extension/EUI/container/scroller/index.html)
-
-
-效果：  
-![效果演示](http://img.blog.csdn.net/20171120084915768?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VoYWlzaGVuZ3h4eA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)  
-
-Scroller常结合List使用，Scroller负责控制滑动，List负者呈现选项， 常在背包物品列表、商品列表、成就列表、任务列表等中使用，通常会有许多项，少的几个多者上百上千，数量庞大，如果直接通过addChild方法添加，就会造成性能上的问题。而直接使用List的虚拟布局将会大幅度提升性能。
-效果代码：
-
+Scroller包含有两个方法的滚动条，即水平滚动条horizontalScrollBar （eui.HScrollBar对象），垂直滚动条verticalScrollBar（eui.VScrollBar对象）。我们可以通过设置scrollPolicyH 和scrollPolicyV来控制两个方向的滚动条是否启用，或者直接使用eui.VScrollBar或者eui.HScrollBar而 使用Scroller组件达到相同效果。
+Scroller简单代码示例(第1个Gif的代码)：
+   
 ```
         <e:Scroller id="scro" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" scrollPolicyV="on"
                     bottom="10" left="10" right="10" top="10">
@@ -46,80 +31,75 @@ Scroller常结合List使用，Scroller负责控制滑动，List负者呈现选�
             </e:List>
         </e:Scroller>
 ```
-
-
-**## eui.Scroller + eui.List实现滑动列表**
-这是Egret 官网提供了一种列表的实现方式，这种实现的方式是使用了虚拟布局、自定义项呈现器，达到显示多少创建多少的要求，当然，需要了解具体怎么实现的，还需要读者分析底层的处理，或者自己实现试试。
-
-实现方法：
-1.首先继承自eui.Scroller 创建自定义组件
-ScrollerPanel.ts
-```
-   module Common {
-    	/** 
-    	 * 滑动列表
-    	 * 使用虚拟布局、自定义项呈现器
-    	 * 不需要初始化item只需要添加皮肤
-    	 * 
-    	 */
-	    	export class ScrollerPanel extends eui.Scroller implements       eui.UIComponent {
-    		public dataList: eui.List;
-   		public constructor() {
-    			super();
-    			this.skinName = Common.ScrollerPanelSkin;
-   		    	this.viewport = this.dataList;
-    		}
-    		/**
-    		 * 通过SkinName 初始化item皮肤
-    		 * @param itemSkin item皮肤
-   		     */
-  	    	public initItemSkin(itemSkin: any): void {
-     			this.dataList.itemRendererSkinName = itemSkin;
-    		}
-   		   /**
-  	         *  通过itemRenderer 初始化item皮肤 
-    		 *  @param itemRenderer 所有item都要继承 eui.ItemRenderer
-    	 	 */
-    		public initItemRenderer(itemRenderer: any): void {
-    			this.dataList.itemRenderer = itemRenderer;
-    		}
-    		/** 进行数据绑定 */
-    		public bindData(data: Array<any>): void {
-    			let arrCollection: eui.ArrayCollection = new      eui.ArrayCollection(data);
-   			this.dataList.dataProvider = arrCollection;
-    		}
-    	}
-    }
-```
-ScrollerPanelSkin.exml
+## 创建
+- 选项创建
+  这里的选项，是指某个物品，某个任务，某个菜单等等，有两种创建方式：一种是只需要创建创建皮肤，一种是创建成组件。两种方式都是通过数据绑定方式呈现，后续讲解数据绑定。
+  皮肤示例：
 
 ```
-    <?xml version="1.0" encoding="utf-8"?>
-    <e:Skin class="Common.ScrollerPanelSkin" minWidth="20" minHeight="20" xmlns:e="http://ns.egret.com/eui"
-           xmlns:w="http://ns.egret.com/wing">
-      <e:HScrollBar id="horizontalScrollBar" width="100%" bottom="0" visible="false" autoVisibility="false" />
-        <e:VScrollBar id="verticalScrollBar" height="100%" right="0" visible="false" autoVisibility="false" />
-       <e:List id="dataList" width="100%" height="100%" x="0" y="0">
-            <e:layout>
-               <e:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
-           </e:layout>
-         </e:List>
-   </e:Skin>
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ItemSkin" width="100" height="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"
+        states="up,down">
+	<e:Image source="frame_text_4" scale9Grid="12,12,6,6" width="100%" height="100%" horizontalCenter="0"
+	         verticalCenter="0" source.down="chatVipBg" scale9Grid.down="8,9,2,4" />
+	<!-- 数据呈现 -->
+	<e:Label id="itemLab" text="{data.lab}" textColor="0x110202" textAlign="center" horizontalCenter="0" verticalCenter="0" />
+</e:Skin>
 ```
-ScrollerPanel 继承了eui.Scroller ，使用时在实例化之后使用initItemSkin或者initItemRenderer初始化item样式。通过设置this.dataList.dataProvider绑定列表数据，在此构建外部一个绑定数据的方法，初始化绑定的数据源arrCollection，每次数据更新是重新绑定。Item的数据是按照arrCollection顺序来进行绑定的。
+ 这里创建一个名为ItemSkin的皮肤。两种状态：up,down。其中down是选中时状态，itemLab是我们要呈现的数据，当然也可是是其他组件，按照需求去控制。
+ text="{data.lab}"是指text的内容取data.lab的值
+ 在示例1中数据源：
+ 
+```
+ <e:ArrayCollection>
+                    <e:Array>
+                        <e:Object lab="item_1" />
+                        <e:Object lab="item_2" />
+                        <e:Object lab="item_3" />
+                        <e:Object lab="item_4" />
+                        <e:Object lab="item_5" />
+                    </e:Array>
+                </e:ArrayCollection>
+```
+- 创建滑动列表
+  我们可以直接使用<e:Group>包含eui.VScrollBar或者eui.HScrollBar+List创建，也可以自己将List作为Scroller的子组件进行呈现。这里直接使用Scroller+List。
+ 代码见上上上面。
+ 指定List的选项皮肤：
+```
+itemRendererSkinName="ItemSkin" 
+```
+使用皮肤的好处就是所见即所得
+- 调整布局
+ 这里调整List的布局
 
-初始化Item的两种方式的区别：
+```
+ 
+                <e:layout>
+                    <e:VerticalLayout horizontalAlign="center" verticalAlign="top" />
+                </e:layout>
+```
+因为我这里一行只有1项，所以只需要VerticalLayout 水平居中，垂直方向顶部对齐。
+## 调整
+ 上述只是简单的创建滑动列表，在皮肤中，我们只能绑定数据，实际开发中，我们常常通过数据进行一些逻辑处理，比如状态控制，图片替换，那么，我们可以直接创建ItemPanel 组件，如：
+ 
+```
+class ItemPanel extends eui.ItemRenderer{
+	public constructor() {
+		super();
+		this.skinName = ItemSkin;
+	
+	}
 
-initItemSkin：使用的是exml文件描述或者名称，通过可是话直接创建，在通常除了绑定数据，不再做其他操作，可以采用这种方式，下exml 中使用数据的方式如：
-ItemSkin.exml
-...
-<e:Lable text="{data.lable}" /> 
-...
- data是绑定的数据对象形如：data={lable:"demoText",bg:"demo_png"}
-那么e:Lable 的text内容就是demoText 
+	protected dataChanged(){
+ 
+		  let list  = this.parent as eui.List;
+		 this.selected = list.selectedItem == this.data;
+	}
+}
+```
 
-initItemRenderer： 使用的是eui.ItemRenderer的子类对象，也是一个自定义组件，View方面使用exml，同时在类中实现一些特殊的操作，一些数据判断，筛选，格式化等。
 
-item点击事件：
-this.scro.dataList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTouch, this);
-显示选项使用的是eui.List而不是DataGroup是因为DataGroup无法监听ItemTapEvent事件，在自定义组件中，建议把不需要监听事件的设为false,避免多次触发事件响应，
+ 
+ 
+
+
