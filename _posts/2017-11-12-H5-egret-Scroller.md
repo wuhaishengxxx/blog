@@ -13,9 +13,12 @@ H5游戏开发之滑动列表
 
 <!--more-->
  eui.Scroller 滚动控制容器,是一个常用的组件，详见官方链接：
-http://developer.egret.com/cn/github/egret-docs/extension/EUI/container/scroller/index.html
-效果：
-![效果演示](http://img.blog.csdn.net/20171120084915768?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VoYWlzaGVuZ3h4eA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+ [这里](http://developer.egret.com/cn/github/egret-docs/extension/EUI/container/scroller/index.html)
+
+
+效果：  
+![效果演示](http://img.blog.csdn.net/20171120084915768?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VoYWlzaGVuZ3h4eA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)  
+
 Scroller常结合List使用，Scroller负责控制滑动，List负者呈现选项， 常在背包物品列表、商品列表、成就列表、任务列表等中使用，通常会有许多项，少的几个多者上百上千，数量庞大，如果直接通过addChild方法添加，就会造成性能上的问题。而直接使用List的虚拟布局将会大幅度提升性能。
 效果代码：
 
