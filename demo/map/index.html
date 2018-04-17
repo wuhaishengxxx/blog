@@ -43,7 +43,7 @@
 
         function completeHandler() {
 
-            require(['./Main'], function (Main) {
+            require(['Main'], function (Main) {
                 window["Main"] = Main["Main"];
                 egret.runEgret({
                     renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor: function (context) {
